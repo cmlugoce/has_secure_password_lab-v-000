@@ -55,4 +55,11 @@ Rails.application.routes.draw do
   #   end
   resources :users
   resources :sessions
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  post '/logout' => 'sessions#destroy'
+
+  resources :users, only: [:new, :create]
+
+  root 'welcome#home'
 end
